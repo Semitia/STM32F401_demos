@@ -1,0 +1,26 @@
+--cpu Cortex-M4.fp
+"led_demo\startup_stm32f401xc.o"
+"led_demo\main.o"
+"led_demo\gpio.o"
+"led_demo\stm32f4xx_it.o"
+"led_demo\stm32f4xx_hal_msp.o"
+"led_demo\stm32f4xx_hal_tim.o"
+"led_demo\stm32f4xx_hal_tim_ex.o"
+"led_demo\stm32f4xx_hal_rcc.o"
+"led_demo\stm32f4xx_hal_rcc_ex.o"
+"led_demo\stm32f4xx_hal_flash.o"
+"led_demo\stm32f4xx_hal_flash_ex.o"
+"led_demo\stm32f4xx_hal_flash_ramfunc.o"
+"led_demo\stm32f4xx_hal_gpio.o"
+"led_demo\stm32f4xx_hal_dma_ex.o"
+"led_demo\stm32f4xx_hal_dma.o"
+"led_demo\stm32f4xx_hal_pwr.o"
+"led_demo\stm32f4xx_hal_pwr_ex.o"
+"led_demo\stm32f4xx_hal_cortex.o"
+"led_demo\stm32f4xx_hal.o"
+"led_demo\stm32f4xx_hal_exti.o"
+"led_demo\system_stm32f4xx.o"
+--strict --scatter "LED_demo\LED_demo.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "LED_demo.map" -o LED_demo\LED_demo.axf
