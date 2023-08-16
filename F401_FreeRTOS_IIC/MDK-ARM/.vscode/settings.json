@@ -4,6 +4,8 @@
         "freertos.h": "c",
         "main.h": "c",
         "as5600.h": "c",
-        "freertosconfig.h": "c"
+        "freertosconfig.h": "c",
+        "lowpass.h": "c",
+        "pid.h": "c"
     }
 }
