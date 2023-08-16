@@ -36,6 +36,7 @@
 "f401_freertosdemo\heap_4.o"
 "f401_freertosdemo\port.o"
 "f401_freertosdemo\myiic.o"
+"f401_freertosdemo\as5600.o"
 --strict --scatter "F401_FreeRTOSdemo\F401_FreeRTOS_IIC.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

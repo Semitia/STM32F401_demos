@@ -5,7 +5,9 @@
 #include "usart.h"
 #include "stdio.h"
 #include "delay.h"
-#include "myiic.h"
+#include "stdlib.h"
+//#include "myiic.h"
+#include "AS5600.h"
 
 uint8_t USART1_BUF[] = "Hello FreeRTOS\r\n";
 
@@ -73,7 +75,7 @@ void info_Task(void *argument)
 
   while(1)
   {
-		printf("angle: %.2f\r\n", angle); 
+		//printf("angle: %.2f\r\n", angle); 
     //HAL_UART_Transmit(&huart1,USART1_BUF,sizeof(USART1_BUF),0xffff);
 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_RESET);
     osDelay(1000);
@@ -86,12 +88,19 @@ void info_Task(void *argument)
 void AS5600_Task(void *argument)
 {
 	iic_init();								/* Initialize IIC (it should be excute after delay_init)*/  
+	AS5600_t *as1 = (AS5600_t *)malloc(sizeof(AS5600_t));
+  if(as1 == NULL) {
+    printf("as1 malloc failed\r\n");
+    return;
+  }
+	AS_init(as1,1);
+  
 	while(1)
   {
-		angle = AS5600_ReadAngle(AS5600_HI, AS5600_LO);
+		AS_update(as1);
+		printf("angle: %.2f, timestamp: %d\r\n", as1->angle, as1->ts);
+    printf("velocity: %.2f\r\n", getVelocity(as1));
 		osDelay(1000);
-		
-
   }
 }
 

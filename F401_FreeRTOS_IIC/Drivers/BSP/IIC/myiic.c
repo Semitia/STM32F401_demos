@@ -231,7 +231,7 @@ float AS5600_ReadAngle(uint16_t ReadAddr_hi,uint16_t ReadAddr_lo)
     high=AS5600_ReadOneByte(ReadAddr_hi);
     low=AS5600_ReadOneByte(ReadAddr_lo);
     TwoByte_Data = (high<<8)|low;
-    angle = (float) TwoByte_Data*360/4096; 
+    angle = (float) TwoByte_Data*_2PI/4096; 
     return angle;
 }
 

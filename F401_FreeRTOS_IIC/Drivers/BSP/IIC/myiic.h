@@ -27,6 +27,7 @@
 
 #define IIC_READ_SDA     HAL_GPIO_ReadPin(IIC_SDA_GPIO_PORT, IIC_SDA_GPIO_PIN) /* 读取SDA */
 
+#define _2PI 6.28318530718f
 
 /* IIC所有操作函数 */
 void iic_init(void);            /* 初始化IIC的IO口 */
