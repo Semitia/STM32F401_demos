@@ -3,8 +3,8 @@
  * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'F401_FreeRTOSdemo' 
- * Target:  'F401_FreeRTOSdemo' 
+ * Project: 'F401_FreeRTOS_IIC' 
+ * Target:  'F401_FreeRTOS_IIC' 
  */
 
 #ifndef RTE_COMPONENTS_H
