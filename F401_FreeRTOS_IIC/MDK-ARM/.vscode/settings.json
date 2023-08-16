@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "myiic.h": "c",
-        "freertos.h": "c"
+        "freertos.h": "c",
+        "main.h": "c"
     }
 }

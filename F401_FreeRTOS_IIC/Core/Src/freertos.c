@@ -67,29 +67,28 @@ void start_task(void *pvParameters)
     taskEXIT_CRITICAL();            /* ÍË³öÁÙ½çÇø */
 }
 
-static uint16_t raw_res=0;
+static float angle = 0;
 void info_Task(void *argument)
 {
 
   while(1)
   {
-		printf("raw_num: %d\r\n", raw_res); 
+		printf("angle: %.2f\r\n", angle); 
     //HAL_UART_Transmit(&huart1,USART1_BUF,sizeof(USART1_BUF),0xffff);
 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_RESET);
-    //osDelay(1000);
-		delay_ms(1000);
+    osDelay(1000);
 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);
-		//osDelay(1000);
-		delay_ms(1000);
+		osDelay(1000);
+
   }
 }
 
 void AS5600_Task(void *argument)
 {
-	
+	iic_init();								/* Initialize IIC (it should be excute after delay_init)*/  
 	while(1)
   {
-		//raw_res = AS5600_ReadTwoByte(AS5600_HI, AS5600_LO);
+		angle = AS5600_ReadAngle(AS5600_HI, AS5600_LO);
 		osDelay(1000);
 		
 

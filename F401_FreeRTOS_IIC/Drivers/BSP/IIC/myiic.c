@@ -223,13 +223,15 @@ void AS5600_WriteOneByte(uint16_t WriteAddr,uint8_t WriteData)
 }
 
 
-uint16_t AS5600_ReadTwoByte(uint16_t ReadAddr_hi,uint16_t ReadAddr_lo)
+float AS5600_ReadAngle(uint16_t ReadAddr_hi,uint16_t ReadAddr_lo)
 {
-	uint16_t TwoByte_Data = 0;
-	uint8_t hi_Data=0,lo_Data=0;
-	hi_Data=AS5600_ReadOneByte(ReadAddr_hi);
-	lo_Data=AS5600_ReadOneByte(ReadAddr_lo);
-	TwoByte_Data = (hi_Data<<8)|lo_Data;
-	return TwoByte_Data;
+    uint16_t TwoByte_Data = 0;
+    uint8_t high=0,low=0;
+    float angle=0;
+    high=AS5600_ReadOneByte(ReadAddr_hi);
+    low=AS5600_ReadOneByte(ReadAddr_lo);
+    TwoByte_Data = (high<<8)|low;
+    angle = (float) TwoByte_Data*360/4096; 
+    return angle;
 }
 

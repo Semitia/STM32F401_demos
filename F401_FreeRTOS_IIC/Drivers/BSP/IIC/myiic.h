@@ -40,7 +40,7 @@ uint8_t iic_read_byte(unsigned char ack);/* IIC读取一个字节 */
 
 uint8_t AS5600_ReadOneByte(uint16_t ReadAddr);
 void AS5600_WriteOneByte(uint16_t WriteAddr,uint8_t WriteData);
-uint16_t AS5600_ReadTwoByte(uint16_t ReadAddr_hi,uint16_t ReadAddr_lo);
+float AS5600_ReadAngle(uint16_t ReadAddr_hi,uint16_t ReadAddr_lo);
 
 													
 #endif

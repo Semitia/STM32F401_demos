@@ -12,7 +12,6 @@ int main(void)
 {
   HAL_Init();	
   SystemClock_Config();     /* Configure the system clock */
-  //iic_init();								/* Initialize IIC */  
 	delay_init(16);
   MX_GPIO_Init();					  /* Initialize all configured peripherals */
   MX_USART1_UART_Init();
