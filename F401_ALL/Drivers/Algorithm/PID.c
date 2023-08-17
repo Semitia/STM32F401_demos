@@ -1,11 +1,10 @@
 #include "PID.h"
 #define _constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))//限幅函数
 
-void PID_init(PID_t *pid, float Kp, float Ki, float Kd, float target, float I_lim, float res_max, float res_min) {
+void PID_init(PID_t *pid, float Kp, float Ki, float Kd, float I_lim, float res_max, float res_min) {
     pid->Kp = Kp;
     pid->Ki = Ki;
     pid->Kd = Kd;
-    pid->target = target;
     pid->I_limit = I_lim;
     pid->res_max = res_max;
     pid->res_min = res_min;

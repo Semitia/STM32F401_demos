@@ -72,21 +72,9 @@ void start_task(void *pvParameters)
 
 void info_Task(void *argument)
 {
-	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 20);
-	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 40);
-	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 60);
-	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 80);
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 30);
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 70);
   while(1)
   {
-		
     //HAL_UART_Transmit(&huart1,USART1_BUF,sizeof(USART1_BUF),0xffff);
-		//pwm += 20;
-		//pwm %= 100;
-		//__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, pwm);
-		//printf("pwm: %d\r\n",pwm); 
-		
 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_RESET);
     osDelay(1000);
 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);

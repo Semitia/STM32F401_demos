@@ -2,18 +2,23 @@
 
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
+uint16_t arr_global;                
 
-
-void MX_TIM2_Init(void)
+/**
+ * @brief TIM2 Initialization Function
+ * @param arr 自动重装载值
+ * @param psc 定时器分频
+*/
+void MX_TIM2_Init(uint16_t arr, uint16_t psc)
 {
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
 
   htim2.Instance = TIM2;																													/* 定时器2 */
-  htim2.Init.Prescaler = 7;																												/* 定时器分频 */
+  htim2.Init.Prescaler = psc;																											/* 定时器分频 */
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;																		/* 向上计数模式 */
-  htim2.Init.Period = 100;																												/* 自动重装载值 */
+  htim2.Init.Period = arr;																												/* 自动重装载值 */
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK){
@@ -51,22 +56,23 @@ void MX_TIM2_Init(void)
   }
   HAL_TIM_MspPostInit(&htim2);
 	
+  arr_global = arr;
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);														/* 定时器，启动！*/
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
 }
 
-void MX_TIM3_Init(void)
+void MX_TIM3_Init(uint16_t arr, uint16_t psc)
 {
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
 
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 7;
+  htim3.Init.Prescaler = psc;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 100;
+  htim3.Init.Period = arr;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)

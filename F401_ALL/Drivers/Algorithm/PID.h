@@ -19,7 +19,7 @@ typedef struct __PID_t{
 
 }PID_t;
 
-void PID_init(PID_t *pid, float Kp, float Ki, float Kd, float target, float I_lim, float res_max, float res_min);
+void PID_init(PID_t *pid, float Kp, float Ki, float Kd, float I_lim, float res_max, float res_min);
 float PID(PID_t *pid, float err);
 
 #endif
