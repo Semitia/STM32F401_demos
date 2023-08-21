@@ -92,6 +92,6 @@ void alignSensor(void){
     AS_update(&M1_encoder);
     zero_electric_angle = electricalAngle(&M0_encoder);
     setTorque(0,_3PI_2);    //松劲
-    printf("zero_electric_angle: %.2f\r\n", zero_electric_angle);
+    printf("zero_electric_angle: %.2f\r\n", zero_electric_angle); 
 }
 
