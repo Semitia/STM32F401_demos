@@ -36,6 +36,7 @@ void FOC_init(float _voltage_power_supply, int _PP, int _DIR){
 		LP_init(&M0_Vel_LPF,0.01f);
 		LP_init(&M1_Vel_LPF,0.01f);
     // 初始化编码器
+    iic_init();							
     AS_init(&M0_encoder,0);
     AS_init(&M1_encoder,1);
     // 初始化PID控制器

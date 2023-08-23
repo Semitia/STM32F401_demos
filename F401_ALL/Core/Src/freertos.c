@@ -10,6 +10,7 @@
 #include "AS5600.h"
 #include "test.h"
 #include "TIM.h"
+#include "FOC.h"
 
 uint8_t USART1_BUF[] = "Hello FreeRTOS\r\n";
 
@@ -25,18 +26,17 @@ void start_task(void *pvParameters);        /* 任务函数 */
 TaskHandle_t            Task1Task_Handler;  /* 任务句柄 */
 void info_Task(void *pvParameters);             /* 任务函数 */
 
-/* TASK2--AS5600 任务 配置 */
+/* TASK2--CMD 任务 配置 */
 #define TASK2_PRIO      2                   /* 任务优先级 */
 #define TASK2_STK_SIZE  128                 /* 任务堆栈大小 */
 TaskHandle_t            Task2Task_Handler;  /* 任务句柄 */
-void AS5600_Task(void *pvParameters);             /* 任务函数 */
+void CMD_Task(void *pvParameters);             /* 任务函数 */
 
 
 /**
   * @brief  FreeRTOS initialization
   */
 void MX_FREERTOS_Init(void) {
-	
 	xTaskCreate((TaskFunction_t )start_task,          /* 任务函数 */
 						(const char*    )"start_task",          /* 任务名称 */
 						(uint16_t       )START_STK_SIZE,        /* 任务堆栈大小 */
@@ -52,23 +52,24 @@ void MX_FREERTOS_Init(void) {
  */
 void start_task(void *pvParameters)
 {
-    taskENTER_CRITICAL();           /* 进入临界区 */
-    /* 创建任务1 */
-    xTaskCreate((TaskFunction_t )info_Task,
-                (const char*    )"infoTask",
-                (uint16_t       )TASK1_STK_SIZE,
-                (void*          )NULL,
-                (UBaseType_t    )TASK1_PRIO,
-                (TaskHandle_t*  )&Task1Task_Handler);
-    /* 创建任务2 */
-    xTaskCreate((TaskFunction_t )AS5600_Task,
-                (const char*    )"AS5600Task",
-                (uint16_t       )TASK2_STK_SIZE,
-                (void*          )NULL,
-                (UBaseType_t    )TASK2_PRIO,
-                (TaskHandle_t*  )&Task2Task_Handler);
-    vTaskDelete(StartTask_Handler); /* 删除开始任务 */
-    taskEXIT_CRITICAL();            /* 退出临界区 */
+  
+  taskENTER_CRITICAL();           /* 进入临界区 */
+  /* 创建任务1 */
+  xTaskCreate((TaskFunction_t )info_Task,
+              (const char*    )"infoTask",
+              (uint16_t       )TASK1_STK_SIZE,
+              (void*          )NULL,
+              (UBaseType_t    )TASK1_PRIO,
+              (TaskHandle_t*  )&Task1Task_Handler);
+  /* 创建任务2 */
+  xTaskCreate((TaskFunction_t )CMD_Task,
+              (const char*    )"CMDTask",
+              (uint16_t       )TASK2_STK_SIZE,
+              (void*          )NULL,
+              (UBaseType_t    )TASK2_PRIO,
+              (TaskHandle_t*  )&Task2Task_Handler);
+  vTaskDelete(StartTask_Handler); /* 删除开始任务 */
+  taskEXIT_CRITICAL();            /* 退出临界区 */
 }
 
 void info_Task(void *argument)
@@ -82,8 +83,10 @@ void info_Task(void *argument)
   }
 }
 
-void AS5600_Task(void *argument)
+void CMD_Task(void *argument)
 {
-  CMD_ctrl();
+  FOC_init(11.1f,7,1);
+  AS5600_test();
+
 }
 

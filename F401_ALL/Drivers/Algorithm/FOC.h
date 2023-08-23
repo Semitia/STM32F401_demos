@@ -17,7 +17,7 @@ void setTorque(float Uq, float angle);
 void alignSensor(void);
 float normalizeAngle(float angle);
 float electricalAngle(AS5600_t *encoder);
-
+extern AS5600_t M0_encoder, M1_encoder;
 
 #endif
 

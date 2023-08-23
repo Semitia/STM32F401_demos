@@ -50,3 +50,7 @@ f401_freertosdemo\test.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdio.
 f401_freertosdemo\test.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdlib.h
 f401_freertosdemo\test.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 f401_freertosdemo\test.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+f401_freertosdemo\test.o: ..\Drivers\Algorithm\FOC.h
+f401_freertosdemo\test.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\math.h
+f401_freertosdemo\test.o: ..\Drivers\Algorithm\lowpass.h
+f401_freertosdemo\test.o: ..\Drivers\Algorithm\PID.h
