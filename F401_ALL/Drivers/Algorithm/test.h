@@ -13,6 +13,8 @@
 void LED_test(void);
 void PWM_test(void);
 void AS5600_test(void);
+void USART_RX_test(void);
+void CMD_ctrl(void);
 
 #endif
 

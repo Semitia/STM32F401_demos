@@ -1,5 +1,6 @@
 f401_freertosdemo\usart.o: ../Core/Src/usart.c
 f401_freertosdemo\usart.o: ../Core/Inc/usart.h
+f401_freertosdemo\usart.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 f401_freertosdemo\usart.o: ../Core/Inc/main.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 f401_freertosdemo\usart.o: ../Core/Inc/stm32f4xx_hal_conf.h
@@ -32,4 +33,3 @@ f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-f401_freertosdemo\usart.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdio.h

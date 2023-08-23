@@ -70,8 +70,12 @@ void Task1(void *argument)
 
   while(1)
   {
-		printf("Task1: %s",USART1_BUF);
-		osDelay(1000);
+		if(g_usart_rx_sta & 0x8000 ) {
+			printf("got: %s",g_usart_rx_buf);
+			g_usart_rx_sta = 0;
+		}
+		//else printf("Task1: %s",USART1_BUF);
+		osDelay(100);
   }
 }
 

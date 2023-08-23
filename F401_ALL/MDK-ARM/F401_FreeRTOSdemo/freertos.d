@@ -48,4 +48,5 @@ f401_freertosdemo\freertos.o: ../Core/Inc/delay.h
 f401_freertosdemo\freertos.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdlib.h
 f401_freertosdemo\freertos.o: ..\Drivers\BSP\AS5600\AS5600.h
 f401_freertosdemo\freertos.o: ..\Drivers\BSP\IIC\myiic.h
+f401_freertosdemo\freertos.o: ..\Drivers\Algorithm\test.h
 f401_freertosdemo\freertos.o: ..\Drivers\BSP\TIM\TIM.h

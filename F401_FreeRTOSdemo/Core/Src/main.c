@@ -11,7 +11,7 @@ int main(void)
   HAL_Init();	
   SystemClock_Config();     /* Configure the system clock */
   MX_GPIO_Init();					  /* Initialize all configured peripherals */
-  MX_USART1_UART_Init();
+  usart_init(115200);
   osKernelInitialize();  		/* Init scheduler */
   MX_FREERTOS_Init();
   osKernelStart();				  /* Start scheduler */
