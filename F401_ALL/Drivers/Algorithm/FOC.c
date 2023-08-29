@@ -16,8 +16,10 @@ PID_t M0_vel_PID, M1_vel_PID, M0_pos_PID, M1_pos_PID;
  * @brief  将角度归一化到[0,2PI]
 */
 float normalizeAngle(float angle){
+    printf("DEBUG: normalizeAngle input: %.2f, ", angle);
     while(angle >= _2PI) angle -= _2PI;
     while(angle < 0) angle += _2PI;
+    printf("output: %.2f\r\n", angle);
     return angle;
 }
 
@@ -33,8 +35,8 @@ void FOC_init(float _voltage_power_supply, int _PP, int _DIR){
     DIR = _DIR;
 
     // 初始化低通滤波器
-		LP_init(&M0_Vel_LPF,0.01f);
-		LP_init(&M1_Vel_LPF,0.01f);
+    LP_init(&M0_Vel_LPF,0.01f);
+    LP_init(&M1_Vel_LPF,0.01f);
     // 初始化编码器
     iic_init();							
     AS_init(&M0_encoder,0);
@@ -44,7 +46,10 @@ void FOC_init(float _voltage_power_supply, int _PP, int _DIR){
     PID_init(&M1_vel_PID, 0.3f, 7.0f, 1.0f, 10, 5,  -5);
     PID_init(&M0_pos_PID, 0.3f, 0,    1.0f,  0, 10, -10);
     PID_init(&M1_pos_PID, 0.3f, 0,    1.0f,  0, 10, -10);
-
+    // 矫正电角度零点
+    alignSensor();
+		
+	
 }
 
 void setPWM(float Ua,float Ub,float Uc){
@@ -60,6 +65,8 @@ void setPWM(float Ua,float Ub,float Uc){
     __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, CCR1_Val);
     __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, CCR2_Val);
     __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, CCR3_Val);
+
+    printf("DEBUG-setPWM CCR1_Val: %d, CCR2_Val: %d, CCR3_Val: %d\r\n", CCR1_Val, CCR2_Val, CCR3_Val);
 }
 
 /**
@@ -70,7 +77,8 @@ void setPWM(float Ua,float Ub,float Uc){
 void setTorque(float Uq, float angle){
     // 更新角度值
     AS_update(&M0_encoder);
-    AS_update(&M1_encoder);
+    //AS_update(&M1_encoder);
+
     Uq = _constrain(Uq, -(voltage_power_supply/2), voltage_power_supply/2);
     // Park逆变换
     U_alpha = -Uq*sin(angle);
@@ -79,20 +87,27 @@ void setTorque(float Uq, float angle){
     Ua = U_alpha + voltage_power_supply/2;
     Ub = (sqrt3*U_beta - U_alpha)/2 + voltage_power_supply/2;
     Uc = (-U_alpha-sqrt3*U_beta)/2 + voltage_power_supply/2;
-    setPWM(Ua, Ub, Uc);
+    //setPWM(Ua, Ub, Uc);
+	
+    printf("DEBUG-setTorque elec_angle: %.2f, Uq:%.2f, ", angle,Uq);
+	printf("Ua: %.2f, Ub: %.2f, Uc: %.2f\r\n", Ua, Ub, Uc);
+    return;
 }
 
 float electricalAngle(AS5600_t *encoder){
-    return normalizeAngle((float)(DIR*PP)*getMechanicalAngle(encoder) - zero_electric_angle);
+    float res = normalizeAngle((float)(DIR*PP)*getMechanicalAngle(encoder) - zero_electric_angle);
+	
+    printf("DEBUG-electricalAngle ele_Angel: %.2f\r\n", res);
+    return res;
 }
 
 void alignSensor(void){
     setTorque(3,_3PI_2);    //起劲
     osDelay(1000);
     AS_update(&M0_encoder);
-    AS_update(&M1_encoder);
+    //AS_update(&M1_encoder);
     zero_electric_angle = electricalAngle(&M0_encoder);
     setTorque(0,_3PI_2);    //松劲
-    printf("zero_electric_angle: %.2f\r\n", zero_electric_angle); 
+    printf("DEBUG-alignSensor zero_electric_angle: %.2f\r\n", zero_electric_angle); 
 }
 

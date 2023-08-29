@@ -5,6 +5,7 @@
 #include "delay.h"
 #include "myiic.h"
 #include "TIM.h"
+#include "FOC.h"
 
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
@@ -18,8 +19,8 @@ int main(void)
 	MX_TIM2_Init(100,8-1);
   MX_TIM3_Init(100,8-1);
   usart_init(115200);
-	
   osKernelInitialize();  		/* Init scheduler */
+	
   MX_FREERTOS_Init();
   osKernelStart();				  /* Start scheduler */
 

@@ -48,3 +48,8 @@ f401_freertosdemo\main.o: ../Core/Inc/gpio.h
 f401_freertosdemo\main.o: ../Core/Inc/delay.h
 f401_freertosdemo\main.o: ..\Drivers\BSP\IIC\myiic.h
 f401_freertosdemo\main.o: ..\Drivers\BSP\TIM\TIM.h
+f401_freertosdemo\main.o: ..\Drivers\Algorithm\FOC.h
+f401_freertosdemo\main.o: ..\Drivers\BSP\AS5600\AS5600.h
+f401_freertosdemo\main.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\math.h
+f401_freertosdemo\main.o: ..\Drivers\Algorithm\lowpass.h
+f401_freertosdemo\main.o: ..\Drivers\Algorithm\PID.h

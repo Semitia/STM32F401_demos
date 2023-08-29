@@ -21,16 +21,22 @@ TaskHandle_t            StartTask_Handler;  /* 任务句柄 */
 void start_task(void *pvParameters);        /* 任务函数 */
 
 /* TASK1--INFO 任务 配置 */
-#define TASK1_PRIO      3                   /* 任务优先级 */
+#define TASK1_PRIO      1                   /* 任务优先级 */
 #define TASK1_STK_SIZE  128                 /* 任务堆栈大小 */
 TaskHandle_t            Task1Task_Handler;  /* 任务句柄 */
-void info_Task(void *pvParameters);             /* 任务函数 */
+void info_Task(void *pvParameters);         /* 任务函数 */
 
 /* TASK2--CMD 任务 配置 */
-#define TASK2_PRIO      2                   /* 任务优先级 */
+#define TASK2_PRIO      3                   /* 任务优先级 */
 #define TASK2_STK_SIZE  128                 /* 任务堆栈大小 */
 TaskHandle_t            Task2Task_Handler;  /* 任务句柄 */
-void CMD_Task(void *pvParameters);             /* 任务函数 */
+void CMD_Task(void *pvParameters);          /* 任务函数 */
+
+/* TASK3--FOC 任务配置 */
+#define TASK3_PRIO      2                   /* 任务优先级 */
+#define TASK3_STK_SIZE  128                 /* 任务堆栈大小 */
+TaskHandle_t            Task3Task_Handler;  /* 任务句柄 */
+void FOC_Task(void *pvParameters);          /* 任务函数 */
 
 
 /**
@@ -68,6 +74,14 @@ void start_task(void *pvParameters)
               (void*          )NULL,
               (UBaseType_t    )TASK2_PRIO,
               (TaskHandle_t*  )&Task2Task_Handler);
+  /* 创建任务3 */
+  xTaskCreate((TaskFunction_t )FOC_Task,
+              (const char*    )"FOCTask",
+              (uint16_t       )TASK3_STK_SIZE,
+              (void*          )NULL,
+              (UBaseType_t    )TASK3_PRIO,
+              (TaskHandle_t*  )&Task3Task_Handler);
+              
   vTaskDelete(StartTask_Handler); /* 删除开始任务 */
   taskEXIT_CRITICAL();            /* 退出临界区 */
 }
@@ -85,8 +99,18 @@ void info_Task(void *argument)
 
 void CMD_Task(void *argument)
 {
-  FOC_init(11.1f,7,1);
-  AS5600_test();
+  //AS5600_test();
+  CMD_ctrl();
+}
 
+void FOC_Task(void *argument)
+{
+  FOC_init(12.0f,7,1); //it should be put here, while I don't konw why
+	// osDelay(1000);
+	 while(1){
+    // float tem_angle = electricalAngle(&M0_encoder);
+		// setTorque(2,tem_angle);
+    osDelay(500);
+	 }
 }
 

@@ -63,6 +63,8 @@ void USART_RX_test(void){
  *          byte 1:     通道序号
  *          byte 2:     占空比(0~100)     
  *      0x01:   读取编码器信息
+ *      0x02:   步进
+ *         byte 1~2:     Uq*1000
  * 
  * @param       无
  * 
@@ -99,9 +101,13 @@ void CMD_ctrl(void){
                     printf("set channel: %d, pwm: %d\r\n",g_usart_rx_buf[1],g_usart_rx_buf[2]);
                     break;
                 case 0x01:
-
+					AS_update(&M0_encoder);
+                    printf("M0: \r\n  timestamp: %d, angle: %.2f, elec_angle:%.2f, velocity: %.2f\r\n", M0_encoder.ts, getMechanicalAngle(&M0_encoder), electricalAngle(&M0_encoder), getVelocity(&M0_encoder));
+                    //printf("M1: \r\ntimestamp: %d, angle: %.2f, velocity: %.2f\r\n", M1_encoder.ts, getMechanicalAngle(&M1_encoder),getVelocity(&M1_encoder));
                     break;
-
+                case 0x02:
+                    setTorque((float)(g_usart_rx_buf[1]*256+g_usart_rx_buf[2])/1000.0f, electricalAngle(&M0_encoder));
+                    break;
             }
 
             g_usart_rx_sta = 0;
