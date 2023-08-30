@@ -8,7 +8,7 @@
 
 /******************************************************************************************/
 /* 加入以下代码, 支持printf函数, 而不需要选择use MicroLIB */
-
+osMutexId_t usart_mutex;                        
 #if 1
 #if (__ARMCC_VERSION >= 6010050)                    /* 使用AC6编译器时 */
 __asm(".global __use_no_semihosting\n\t");          /* 声明不使用半主机模式 */
@@ -52,9 +52,10 @@ FILE __stdout;
 /* 重定义fputc函数, printf函数最终会通过调用fputc输出字符串到串口 */
 int fputc(int ch, FILE *f)
 {
+    xSemaphoreTake(usart_mutex, 1000);     /* 获取互斥信号量 */
     while ((USART1->SR & 0X40) == 0);               /* 等待上一个字符发送完成 */
-
     USART1->DR = (uint8_t)ch;                       /* 将要发送的字符 ch 写入到DR寄存器 */
+    xSemaphoreGive(usart_mutex);                    /* 释放互斥信号量 */
     return ch;
 }
 #endif

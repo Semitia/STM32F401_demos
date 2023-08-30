@@ -58,7 +58,8 @@ void MX_FREERTOS_Init(void) {
  */
 void start_task(void *pvParameters)
 {
-  
+  usart_mutex = xSemaphoreCreateMutex();
+
   taskENTER_CRITICAL();           /* 进入临界区 */
   /* 创建任务1 */
   xTaskCreate((TaskFunction_t )info_Task,
@@ -88,12 +89,31 @@ void start_task(void *pvParameters)
 
 void info_Task(void *argument)
 {
+  //char pcWriteBuffer[1024];
   while(1)
   {
 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_RESET);
     osDelay(1000);
 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);
 		osDelay(1000);
+    printf("elec_angle: %.2f, velocity: %.2f\r\n", electricalAngle(&M0_encoder), getVelocity(&M0_encoder));
+    // // 调用vTaskList()函数，获取所有任务的基本信息，并存入pcWriteBuffer数组
+    //   vTaskList(pcWriteBuffer);
+
+    //   // 打印pcWriteBuffer数组的内容
+    //   printf("Name\tState\tPriority\tRemainStack\tSequence\r\n");
+    //   printf("%s\r\n", pcWriteBuffer);
+
+    //   // 调用uxTaskGetStackHighWaterMark()函数，获取任务1和任务2的最小剩余栈空间，并打印出来
+    //   //printf("Task 1 minimum remaining stack: %d bytes\r\n", uxTaskGetStackHighWaterMark(xTask1Handle));
+    //   //printf("Task 2 minimum remaining stack: %d bytes\r\n", uxTaskGetStackHighWaterMark(xTask2Handle));
+
+    //   // 调用vTaskGetRunTimeStats()函数，获取所有任务的运行信息，并存入pcWriteBuffer数组
+    //   vTaskGetRunTimeStats(pcWriteBuffer);
+
+    //   // 打印pcWriteBuffer数组的内容
+    //   printf("Name\tRunCounts\tUsingRate\r\n");
+    //   printf("%s\r\n", pcWriteBuffer);
   }
 }
 
@@ -102,7 +122,7 @@ void CMD_Task(void *argument)
 	//FOC_init(12.0f,7,1); //it should be put here, while I don't konw why
   //AS5600_test();
 	while(1){
-		//CMD_ctrl();
+		CMD_ctrl();
 		osDelay(100);
 	}
 }
@@ -111,10 +131,22 @@ void FOC_Task(void *argument)
 {
   FOC_init(12.0f,7,1); //it should be put here, while I don't konw why
 
-	 while(1){
-		setTorque(0.5, electricalAngle(&M0_encoder));
-		//printf("step forward\r\n");
-    osDelay(500);
-	 }
+  while(1){
+    switch(control_mode)
+    {
+      case TORQUE:
+        setTorque(target_torque_0, electricalAngle(&M0_encoder));
+        break;
+      case VELOCITY:
+        setVelocity(target_velocity_0);
+        break;
+      case POSITION:
+        setPosition(target_position_0);
+        break;
+      default:
+        break;
+    }
+    osDelay(10);
+  }
 }
 

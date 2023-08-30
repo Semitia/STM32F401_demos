@@ -44,6 +44,8 @@ f401_freertosdemo\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_R
 f401_freertosdemo\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 f401_freertosdemo\freertos.o: ../Core/Inc/usart.h
 f401_freertosdemo\freertos.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+f401_freertosdemo\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
+f401_freertosdemo\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 f401_freertosdemo\freertos.o: ../Core/Inc/delay.h
 f401_freertosdemo\freertos.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdlib.h
 f401_freertosdemo\freertos.o: ..\Drivers\BSP\AS5600\AS5600.h

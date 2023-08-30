@@ -44,6 +44,8 @@ f401_freertosdemo\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/lis
 f401_freertosdemo\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 f401_freertosdemo\main.o: ../Core/Inc/usart.h
 f401_freertosdemo\main.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+f401_freertosdemo\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
+f401_freertosdemo\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 f401_freertosdemo\main.o: ../Core/Inc/gpio.h
 f401_freertosdemo\main.o: ../Core/Inc/delay.h
 f401_freertosdemo\main.o: ..\Drivers\BSP\IIC\myiic.h

@@ -1,6 +1,9 @@
 f401_freertosdemo\usart.o: ../Core/Src/usart.c
 f401_freertosdemo\usart.o: ../Core/Inc/usart.h
 f401_freertosdemo\usart.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+f401_freertosdemo\usart.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdint.h
+f401_freertosdemo\usart.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stddef.h
 f401_freertosdemo\usart.o: ../Core/Inc/main.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 f401_freertosdemo\usart.o: ../Core/Inc/stm32f4xx_hal_conf.h
@@ -9,7 +12,6 @@ f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def
 f401_freertosdemo\usart.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 f401_freertosdemo\usart.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h
 f401_freertosdemo\usart.o: ../Drivers/CMSIS/Include/core_cm4.h
-f401_freertosdemo\usart.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdint.h
 f401_freertosdemo\usart.o: ../Drivers/CMSIS/Include/cmsis_version.h
 f401_freertosdemo\usart.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 f401_freertosdemo\usart.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -17,7 +19,6 @@ f401_freertosdemo\usart.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 f401_freertosdemo\usart.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-f401_freertosdemo\usart.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stddef.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
@@ -33,3 +34,14 @@ f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 f401_freertosdemo\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+f401_freertosdemo\usart.o: ../Core/Inc/FreeRTOSConfig.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+f401_freertosdemo\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

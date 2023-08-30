@@ -49,6 +49,8 @@ f401_freertosdemo\foc_1.o: ..\Drivers\BSP\IIC\myiic.h
 f401_freertosdemo\foc_1.o: ../Core/Inc/delay.h
 f401_freertosdemo\foc_1.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 f401_freertosdemo\foc_1.o: ../Core/Inc/usart.h
+f401_freertosdemo\foc_1.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
+f401_freertosdemo\foc_1.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 f401_freertosdemo\foc_1.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\math.h
 f401_freertosdemo\foc_1.o: ..\Drivers\Algorithm\lowpass.h
 f401_freertosdemo\foc_1.o: ..\Drivers\Algorithm\PID.h

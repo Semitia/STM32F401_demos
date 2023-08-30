@@ -2,12 +2,16 @@
 
 #define _3PI_2 4.71238898038f   //1.5PI
 #define sqrt3 1.73205080757f
-#define _constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))             
+#define _constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
+
 float voltage_power_supply=0;
-float U_alpha=0,U_beta=0,Ua=0,Ub=0,Uc=0;
 float zero_electric_angle=0;
+float target_position_0 = 0, target_position_1 = 0;
+float target_velocity_0 = 0, target_velocity_1 = 0;
+float target_torque_0 = 0, target_torque_1 = 0;
 int PP=1,DIR=1;
 
+control_mode_t control_mode = TORQUE;
 lowpass_t M0_Vel_LPF, M1_Vel_LPF;
 AS5600_t M0_encoder, M1_encoder;
 PID_t M0_vel_PID, M1_vel_PID, M0_pos_PID, M1_pos_PID;
@@ -16,10 +20,10 @@ PID_t M0_vel_PID, M1_vel_PID, M0_pos_PID, M1_pos_PID;
  * @brief  将角度归一化到[0,2PI]
 */
 float normalizeAngle(float angle){
-    printf("DEBUG: normalizeAngle input: %.2f, ", angle);
+    //printf("DEBUG: normalizeAngle input: %.2f, ", angle);
     while(angle >= _2PI) angle -= _2PI;
     while(angle < 0) angle += _2PI;
-    printf("output: %.2f\r\n", angle);
+    //printf("output: %.2f\r\n", angle);
     return angle;
 }
 
@@ -42,7 +46,7 @@ void FOC_init(float _voltage_power_supply, int _PP, int _DIR){
     AS_init(&M0_encoder,0);
     AS_init(&M1_encoder,1);
     // 初始化PID控制器
-    PID_init(&M0_vel_PID, 0.3f, 7.0f, 1.0f, 10, 5,  -5);
+    PID_init(&M0_vel_PID, 0.28f, 0.0f, 0.001f, 1, 1,  -1);
     PID_init(&M1_vel_PID, 0.3f, 7.0f, 1.0f, 10, 5,  -5);
     PID_init(&M0_pos_PID, 0.3f, 0,    1.0f,  0, 10, -10);
     PID_init(&M1_pos_PID, 0.3f, 0,    1.0f,  0, 10, -10);
@@ -75,6 +79,8 @@ void setPWM(float Ua,float Ub,float Uc){
  * @param  angle  电角度
 */
 void setTorque(float Uq, float angle){
+    static float U_alpha=0,U_beta=0,Ua=0,Ub=0,Uc=0;
+
     // 更新角度值
     AS_update(&M0_encoder);
     //AS_update(&M1_encoder);
@@ -94,10 +100,23 @@ void setTorque(float Uq, float angle){
     return;
 }
 
+void setVelocity(float target_velocity){
+		float err = target_velocity-getVelocity(&M0_encoder);
+		float torque_tem = PID(&M0_vel_PID,err);
+    setTorque(torque_tem, electricalAngle(&M0_encoder));
+		printf("err %.2f, Uq:%.2f\r\n",err,torque_tem);
+    return;
+}
+
+void setPosition(float target_position){
+    setVelocity(PID(&M0_pos_PID, (target_position-getMechanicalAngle(&M0_encoder))));
+    return;
+}
+
 float electricalAngle(AS5600_t *encoder){
     float res = normalizeAngle((float)(DIR*PP)*getMechanicalAngle(encoder) - zero_electric_angle);
 	
-    printf("DEBUG-electricalAngle ele_Angel: %.2f\r\n", res);
+    //printf("DEBUG-electricalAngle ele_Angel: %.2f\r\n", res);
     return res;
 }
 
