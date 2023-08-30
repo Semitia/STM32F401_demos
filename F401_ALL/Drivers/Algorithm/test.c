@@ -70,50 +70,53 @@ void USART_RX_test(void){
  * 
 */
 void CMD_ctrl(void){
-    while(1){
-        if(g_usart_rx_sta & 0x8000)
-        {
-            switch(g_usart_rx_buf[0]){
-                case 0x00:
-                    switch(g_usart_rx_buf[1]){
-                        case 0x00:
-                            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, g_usart_rx_buf[2]);
-                            break;
-                        case 0x01:
-                            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, g_usart_rx_buf[2]);
-                            break;
-                        case 0x02:
-                            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, g_usart_rx_buf[2]);
-                            break;
-                        case 0x03:
-                            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, g_usart_rx_buf[2]);
-                            break;
-                        case 0x04:
-                            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, g_usart_rx_buf[2]);
-                            break;
-                        case 0x05:
-                            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, g_usart_rx_buf[2]);
-                            break;
-                        default:
-                        printf("wrong channel number\r\n");
-                            break;
-                    }
-                    printf("set channel: %d, pwm: %d\r\n",g_usart_rx_buf[1],g_usart_rx_buf[2]);
-                    break;
-                case 0x01:
-					AS_update(&M0_encoder);
-                    printf("M0: \r\n  timestamp: %d, angle: %.2f, elec_angle:%.2f, velocity: %.2f\r\n", M0_encoder.ts, getMechanicalAngle(&M0_encoder), electricalAngle(&M0_encoder), getVelocity(&M0_encoder));
-                    //printf("M1: \r\ntimestamp: %d, angle: %.2f, velocity: %.2f\r\n", M1_encoder.ts, getMechanicalAngle(&M1_encoder),getVelocity(&M1_encoder));
-                    break;
-                case 0x02:
-                    setTorque((float)(g_usart_rx_buf[1]*256+g_usart_rx_buf[2])/1000.0f, electricalAngle(&M0_encoder));
-                    break;
-            }
+			if(g_usart_rx_sta & 0x8000)
+			{
+					switch(g_usart_rx_buf[0]){
+							case 0x00:
+									switch(g_usart_rx_buf[1]){
+											case 0x00:
+													__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, g_usart_rx_buf[2]);
+													break;
+											case 0x01:
+													__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, g_usart_rx_buf[2]);
+													break;
+											case 0x02:
+													__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, g_usart_rx_buf[2]);
+													break;
+											case 0x03:
+													__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, g_usart_rx_buf[2]);
+													break;
+											case 0x04:
+													__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, g_usart_rx_buf[2]);
+													break;
+											case 0x05:
+													__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, g_usart_rx_buf[2]);
+													break;
+											default:
+											printf("wrong channel number\r\n");
+													break;
+									}
+									printf("set channel: %d, pwm: %d\r\n",g_usart_rx_buf[1],g_usart_rx_buf[2]);
+									break;
+							case 0x01:
+									AS_update(&M0_encoder);
+									printf("M0: \r\n  timestamp: %d, angle: %.2f, elec_angle:%.2f, velocity: %.2f\r\n", M0_encoder.ts, getMechanicalAngle(&M0_encoder), electricalAngle(&M0_encoder), getVelocity(&M0_encoder));
+									//printf("M1: \r\ntimestamp: %d, angle: %.2f, velocity: %.2f\r\n", M1_encoder.ts, getMechanicalAngle(&M1_encoder),getVelocity(&M1_encoder));
+									break;
+							case 0x02:
+									setTorque((float)(g_usart_rx_buf[1]*256+g_usart_rx_buf[2])/1000.0f, electricalAngle(&M0_encoder));
+									printf("step forward\r\n");
+									break;
+							default:
+									printf("wrong command\r\n");
+									break;
+					}
 
-            g_usart_rx_sta = 0;
-        }
-        osDelay(100);
-    }
+					g_usart_rx_sta = 0;
+			}
+			else
+			{return;}
 }
 
 

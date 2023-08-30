@@ -66,7 +66,7 @@ void setPWM(float Ua,float Ub,float Uc){
     __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, CCR2_Val);
     __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, CCR3_Val);
 
-    printf("DEBUG-setPWM CCR1_Val: %d, CCR2_Val: %d, CCR3_Val: %d\r\n", CCR1_Val, CCR2_Val, CCR3_Val);
+    //printf("DEBUG-setPWM CCR1_Val: %d, CCR2_Val: %d, CCR3_Val: %d\r\n", CCR1_Val, CCR2_Val, CCR3_Val);
 }
 
 /**
@@ -87,10 +87,10 @@ void setTorque(float Uq, float angle){
     Ua = U_alpha + voltage_power_supply/2;
     Ub = (sqrt3*U_beta - U_alpha)/2 + voltage_power_supply/2;
     Uc = (-U_alpha-sqrt3*U_beta)/2 + voltage_power_supply/2;
-    //setPWM(Ua, Ub, Uc);
+    setPWM(Ua, Ub, Uc);
 	
-    printf("DEBUG-setTorque elec_angle: %.2f, Uq:%.2f, ", angle,Uq);
-	printf("Ua: %.2f, Ub: %.2f, Uc: %.2f\r\n", Ua, Ub, Uc);
+    //printf("DEBUG-setTorque elec_angle: %.2f, Uq:%.2f, ", angle,Uq);
+		//printf("Ua: %.2f, Ub: %.2f, Uc: %.2f\r\n", Ua, Ub, Uc);
     return;
 }
 
