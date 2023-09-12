@@ -76,12 +76,12 @@ void start_task(void *pvParameters)
               (UBaseType_t    )TASK2_PRIO,
               (TaskHandle_t*  )&Task2Task_Handler);
   /* 创建任务3 */
-  xTaskCreate((TaskFunction_t )FOC_Task,
+  /*xTaskCreate((TaskFunction_t )FOC_Task,
               (const char*    )"FOCTask",
               (uint16_t       )TASK3_STK_SIZE,
               (void*          )NULL,
               (UBaseType_t    )TASK3_PRIO,
-              (TaskHandle_t*  )&Task3Task_Handler);
+              (TaskHandle_t*  )&Task3Task_Handler);*/
               
   vTaskDelete(StartTask_Handler); /* 删除开始任务 */
   taskEXIT_CRITICAL();            /* 退出临界区 */
@@ -121,10 +121,11 @@ void CMD_Task(void *argument)
 {
 	//FOC_init(12.0f,7,1); //it should be put here, while I don't konw why
   //AS5600_test();
-	while(1){
-		CMD_ctrl();
-		osDelay(100);
-	}
+	//while(1){
+	//	CMD_ctrl();
+	//	osDelay(100);
+	//}
+	PWM_test();
 }
 
 void FOC_Task(void *argument)

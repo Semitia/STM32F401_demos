@@ -740,8 +740,8 @@ ARM Macro Assembler    Page 12
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=stm32f401_freertos_pwm\startup_stm32f401xc.d -ostm32f401_freert
-os_pwm\startup_stm32f401xc.o -I../Core/Inc -ID:\WORK\Tele-op\STM\STM32F401_Free
-RTOS_PWM\MDK-ARM\RTE -ID:\WORK\SOFTWARES\MDK5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\In
+os_pwm\startup_stm32f401xc.o -I../Core/Inc -ID:\WORK\Tele-op\STM\F401_FreeRTOS_
+PWM\MDK-ARM\RTE -ID:\WORK\SOFTWARES\MDK5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\In
 clude -ID:\WORK\SOFTWARES\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS
 \Device\ST\STM32F4xx\Include --predefine="__UVISION_VERSION SETA 521" --predefi
 ne="_RTE_ SETA 1" --predefine="STM32F401xC SETA 1" --list=startup_stm32f401xc.l

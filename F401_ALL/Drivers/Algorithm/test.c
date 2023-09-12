@@ -17,8 +17,8 @@ void PWM_test(void){
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 40);
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 60);
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 80);
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 30);
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 70);
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, 30);
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, 70);
     while(1){
         pwm += 20;
         pwm %= 100;
@@ -108,10 +108,10 @@ void CMD_ctrl(void){
                             __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, g_usart_rx_buf[2]);
                             break;
                     case 0x04:
-                            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, g_usart_rx_buf[2]);
+                            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, g_usart_rx_buf[2]);
                             break;
                     case 0x05:
-                            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, g_usart_rx_buf[2]);
+                            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, g_usart_rx_buf[2]);
                             break;
                     default:
                     printf("wrong channel number\r\n");

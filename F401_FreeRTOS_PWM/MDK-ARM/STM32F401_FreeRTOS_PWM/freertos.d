@@ -40,6 +40,6 @@ stm32f401_freertos_pwm\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx
 stm32f401_freertos_pwm\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 stm32f401_freertos_pwm\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 stm32f401_freertos_pwm\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-stm32f401_freertos_pwm\freertos.o: ../Core/Inc/tim.h
 stm32f401_freertos_pwm\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 stm32f401_freertos_pwm\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+stm32f401_freertos_pwm\freertos.o: ../Core/Inc/tim.h
