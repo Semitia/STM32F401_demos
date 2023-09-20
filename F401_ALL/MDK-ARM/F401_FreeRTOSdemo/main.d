@@ -31,6 +31,7 @@ f401_freertosdemo\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_
 f401_freertosdemo\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 f401_freertosdemo\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 f401_freertosdemo\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+f401_freertosdemo\main.o: ../Drivers/CMSIS/Include/core_cm4.h
 f401_freertosdemo\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 f401_freertosdemo\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 f401_freertosdemo\main.o: ../Core/Inc/FreeRTOSConfig.h
@@ -55,3 +56,4 @@ f401_freertosdemo\main.o: ..\Drivers\BSP\AS5600\AS5600.h
 f401_freertosdemo\main.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\math.h
 f401_freertosdemo\main.o: ..\Drivers\Algorithm\lowpass.h
 f401_freertosdemo\main.o: ..\Drivers\Algorithm\PID.h
+f401_freertosdemo\main.o: ..\Drivers\BSP\dma.h

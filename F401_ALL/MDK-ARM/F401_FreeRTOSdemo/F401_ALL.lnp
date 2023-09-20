@@ -39,6 +39,7 @@
 "f401_freertosdemo\as5600.o"
 "f401_freertosdemo\foc.o"
 "f401_freertosdemo\tim.o"
+"f401_freertosdemo\dma.o"
 "f401_freertosdemo\lowpass.o"
 "f401_freertosdemo\pid.o"
 "f401_freertosdemo\test.o"

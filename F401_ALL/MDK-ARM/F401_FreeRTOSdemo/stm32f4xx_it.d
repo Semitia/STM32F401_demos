@@ -31,4 +31,5 @@ f401_freertosdemo\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 f401_freertosdemo\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 f401_freertosdemo\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 f401_freertosdemo\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+f401_freertosdemo\stm32f4xx_it.o: ../Drivers/CMSIS/Include/core_cm4.h
 f401_freertosdemo\stm32f4xx_it.o: ../Core/Inc/stm32f4xx_it.h

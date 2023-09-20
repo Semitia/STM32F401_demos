@@ -95,8 +95,8 @@ void setTorque(float Uq, float angle){
     Uc = (-U_alpha-sqrt3*U_beta)/2 + voltage_power_supply/2;
     setPWM(Ua, Ub, Uc);
 	
-    //printf("DEBUG-setTorque elec_angle: %.2f, Uq:%.2f, ", angle,Uq);
-		//printf("Ua: %.2f, Ub: %.2f, Uc: %.2f\r\n", Ua, Ub, Uc);
+    printf("DEBUG-setTorque elec_angle: %.2f, Uq:%.2f, ", angle,Uq);
+		printf("Ua: %.2f, Ub: %.2f, Uc: %.2f\r\n", Ua, Ub, Uc);
     return;
 }
 

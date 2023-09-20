@@ -32,6 +32,7 @@ f401_freertosdemo\test.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_
 f401_freertosdemo\test.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 f401_freertosdemo\test.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 f401_freertosdemo\test.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+f401_freertosdemo\test.o: ../Drivers/CMSIS/Include/core_cm4.h
 f401_freertosdemo\test.o: ..\Drivers\BSP\TIM\TIM.h
 f401_freertosdemo\test.o: ..\Drivers\BSP\AS5600\AS5600.h
 f401_freertosdemo\test.o: ..\Drivers\BSP\IIC\myiic.h

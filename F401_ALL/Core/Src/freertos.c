@@ -11,6 +11,7 @@
 #include "test.h"
 #include "TIM.h"
 #include "FOC.h"
+#include "dma.h"
 
 uint8_t USART1_BUF[] = "Hello FreeRTOS\r\n";
 
@@ -96,7 +97,7 @@ void info_Task(void *argument)
     osDelay(1000);
 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);
 		osDelay(1000);
-    printf("elec_angle: %.2f, velocity: %.2f\r\n", electricalAngle(&M0_encoder), getVelocity(&M0_encoder));
+    //printf("elec_angle: %.2f, velocity: %.2f\r\n", electricalAngle(&M0_encoder), getVelocity(&M0_encoder));
     // // 调用vTaskList()函数，获取所有任务的基本信息，并存入pcWriteBuffer数组
     //   vTaskList(pcWriteBuffer);
 
@@ -117,15 +118,27 @@ void info_Task(void *argument)
   }
 }
 
+
 void CMD_Task(void *argument)
 {
-	//FOC_init(12.0f,7,1); //it should be put here, while I don't konw why
-  //AS5600_test();
-	//while(1){
-	//	CMD_ctrl();
-	//	osDelay(100);
-	//}
-	PWM_test();
+
+  static uint8_t string_to_send[] = "Hello FreeRTOSHello FreeRTOSHello FreeRTOSHello FreeRTOSHello FreeRTOSHello FreeRTOSHello FreeRTOS\r\n";
+	while(1){
+		// CMD_ctrl();
+		// osDelay(100);
+    //DMA test
+    HAL_UART_Transmit_DMA(&g_uart1_handle, string_to_send, sizeof(string_to_send));
+    while(1) {
+        if (__HAL_DMA_GET_FLAG(&g_dma_handle, DMA_FLAG_TCIF3_7))        /*等待传输完成*/
+        {
+            __HAL_DMA_CLEAR_FLAG(&g_dma_handle, DMA_FLAG_TCIF3_7);      /*清除传输完成标志*/
+            HAL_UART_DMAStop(&g_uart1_handle);      /*传输完毕关闭DMA*/
+            break;
+        }
+    }
+    osDelay(500);
+	}
+
 }
 
 void FOC_Task(void *argument)

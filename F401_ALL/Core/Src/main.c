@@ -6,6 +6,7 @@
 #include "myiic.h"
 #include "TIM.h"
 #include "FOC.h"
+#include "dma.h"
 
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
@@ -19,6 +20,7 @@ int main(void)
 	MX_TIM2_Init(100,8-1);
   MX_TIM3_Init(100,8-1);
   usart_init(115200);
+  dma_init(DMA2_Stream7, DMA_CHANNEL_4);  /* ≥ı ºªØDMA */
   osKernelInitialize();  		/* Init scheduler */
 	
   MX_FREERTOS_Init();

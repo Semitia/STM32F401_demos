@@ -33,6 +33,7 @@ f401_freertosdemo\myiic.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr
 f401_freertosdemo\myiic.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 f401_freertosdemo\myiic.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 f401_freertosdemo\myiic.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+f401_freertosdemo\myiic.o: ../Drivers/CMSIS/Include/core_cm4.h
 f401_freertosdemo\myiic.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 f401_freertosdemo\myiic.o: ../Core/Inc/FreeRTOSConfig.h
 f401_freertosdemo\myiic.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
