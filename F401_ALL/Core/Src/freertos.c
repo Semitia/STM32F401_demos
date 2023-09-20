@@ -12,6 +12,7 @@
 #include "TIM.h"
 #include "FOC.h"
 #include "dma.h"
+#include "DataScope_DP.h"
 
 uint8_t USART1_BUF[] = "Hello FreeRTOS\r\n";
 
@@ -121,23 +122,18 @@ void info_Task(void *argument)
 
 void CMD_Task(void *argument)
 {
-
-  static uint8_t string_to_send[] = "Hello FreeRTOSHello FreeRTOSHello FreeRTOSHello FreeRTOSHello FreeRTOSHello FreeRTOSHello FreeRTOS\r\n";
-	while(1){
-		// CMD_ctrl();
-		// osDelay(100);
-    //DMA test
-    HAL_UART_Transmit_DMA(&g_uart1_handle, string_to_send, sizeof(string_to_send));
-    while(1) {
-        if (__HAL_DMA_GET_FLAG(&g_dma_handle, DMA_FLAG_TCIF3_7))        /*等待传输完成*/
-        {
-            __HAL_DMA_CLEAR_FLAG(&g_dma_handle, DMA_FLAG_TCIF3_7);      /*清除传输完成标志*/
-            HAL_UART_DMAStop(&g_uart1_handle);      /*传输完毕关闭DMA*/
-            break;
-        }
-    }
-    osDelay(500);
-	}
+  //DataScope test
+  double j=0;
+  while(1)	
+	{
+			j+=0.1;
+			if(j>3.14)  j=-3.14; 
+			DataScope_Get_Channel_Data(10*sin(j), 1 );
+			DataScope_Get_Channel_Data(10*cos(j), 2 );
+			DataScope_Get_Channel_Data(2*j, 3 );
+			DataScope_DMA_Send(3);
+			delay_ms(50); //20HZ 
+	} 
 
 }
 

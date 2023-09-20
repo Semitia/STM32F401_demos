@@ -58,3 +58,4 @@ f401_freertosdemo\freertos.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\ma
 f401_freertosdemo\freertos.o: ..\Drivers\Algorithm\lowpass.h
 f401_freertosdemo\freertos.o: ..\Drivers\Algorithm\PID.h
 f401_freertosdemo\freertos.o: ..\Drivers\BSP\dma.h
+f401_freertosdemo\freertos.o: ..\Drivers\Algorithm\DataScope_DP.h

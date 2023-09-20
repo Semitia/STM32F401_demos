@@ -10,6 +10,7 @@
 #include "FreeRTOS.h"
 #include "cmsis_os.h"
 #include "FOC.h"
+#include "dma.h"
 
 void LED_test(void);
 void PWM_test(void);

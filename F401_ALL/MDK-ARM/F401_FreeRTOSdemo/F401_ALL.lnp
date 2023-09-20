@@ -44,6 +44,7 @@
 "f401_freertosdemo\pid.o"
 "f401_freertosdemo\test.o"
 "f401_freertosdemo\foc_1.o"
+"f401_freertosdemo\datascope_dp.o"
 --strict --scatter "F401_FreeRTOSdemo\F401_ALL.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

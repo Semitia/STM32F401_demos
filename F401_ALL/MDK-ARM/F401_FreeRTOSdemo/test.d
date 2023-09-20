@@ -57,3 +57,4 @@ f401_freertosdemo\test.o: ..\Drivers\Algorithm\FOC.h
 f401_freertosdemo\test.o: D:\WORK\SOFTWARES\MDK5\ARM\ARMCC\Bin\..\include\math.h
 f401_freertosdemo\test.o: ..\Drivers\Algorithm\lowpass.h
 f401_freertosdemo\test.o: ..\Drivers\Algorithm\PID.h
+f401_freertosdemo\test.o: ..\Drivers\BSP\dma.h
