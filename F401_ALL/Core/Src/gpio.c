@@ -14,7 +14,7 @@
 /** Configure pins as
         * Analog
         * Input
-        * Output
+        * Output 
         * EVENT_OUT
         * EXTI
 */
