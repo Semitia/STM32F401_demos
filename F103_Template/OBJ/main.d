@@ -31,3 +31,4 @@
 ..\obj\main.o: ..\HAREWARE\LED\led.h
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
 ..\obj\main.o: ..\SYSTEM\sys\sys.h
+..\obj\main.o: ..\HAREWARE\PCA9685.h
