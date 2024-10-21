@@ -565,10 +565,10 @@ ARM Macro Assembler    Page 9
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=..\obj\startup_stm32f10x_hd.d -o..\obj\startup_stm32f10x_hd.o -ID:
-\WORK\Tele-op\STM\F103_Template\USER\RTE -ID:\WORK\SOFTWARES\MDK5\ARM\PACK\Keil
-\STM32F1xx_DFP\2.2.0\Device\Include -ID:\WORK\SOFTWARES\MDK5\ARM\CMSIS\Include 
---predefine="__UVISION_VERSION SETA 521" --predefine="STM32F10X_MD SETA 1" --li
-st=.\listings\startup_stm32f10x_hd.lst ..\CORE\startup_stm32f10x_hd.s
+\WORK\Tele-op\STM\F103_PCA9685\USER\RTE -ID:\WORK\SOFTWARES\MDK5\ARM\PACK\Keil\
+STM32F1xx_DFP\2.2.0\Device\Include -ID:\WORK\SOFTWARES\MDK5\ARM\CMSIS\Include -
+-predefine="__UVISION_VERSION SETA 521" --predefine="STM32F10X_MD SETA 1" --lis
+t=.\listings\startup_stm32f10x_hd.lst ..\CORE\startup_stm32f10x_hd.s
 
 
 

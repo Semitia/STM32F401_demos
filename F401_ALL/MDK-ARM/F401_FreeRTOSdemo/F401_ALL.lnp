@@ -37,7 +37,6 @@
 "f401_freertosdemo\port.o"
 "f401_freertosdemo\myiic.o"
 "f401_freertosdemo\as5600.o"
-"f401_freertosdemo\foc.o"
 "f401_freertosdemo\tim.o"
 "f401_freertosdemo\dma.o"
 "f401_freertosdemo\lowpass.o"

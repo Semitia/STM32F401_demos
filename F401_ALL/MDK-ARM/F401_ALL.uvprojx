@@ -595,11 +595,6 @@
               <FilePath>..\Drivers\BSP\AS5600\AS5600.c</FilePath>
             </File>
             <File>
-              <FileName>FOC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Drivers\BSP\FOC\FOC.c</FilePath>
-            </File>
-            <File>
               <FileName>TIM.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\BSP\TIM\TIM.c</FilePath>
